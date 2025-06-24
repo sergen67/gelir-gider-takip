@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gelir-Gider Takip Uygulaması</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Chart.js ve PapaParse kütüphaneleri -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+</head>
+<body>
+
+    <header>
+        <h1>Gelir-Gider Takip Uygulaması</h1>
+    </header>
+
+    <main class="container">
+        <!-- Bakiye ve Toplamlar -->
+        <section class="balance-section">
+            <div class="balance-card">
+                <h4>Toplam Gelir</h4>
+                <p id="total-income">₺0.00</p>
+            </div>
+            <div class="balance-card">
+                <h4>Toplam Gider</h4>
+                <p id="total-expense">₺0.00</p>
+            </div>
+            <div class="balance-card">
+                <h4>Net Bakiye</h4>
+                <p id="net-balance">₺0.00</p>
+            </div>
+        </section>
+
+        <!-- Grafik Alanı -->
+        <section class="chart-section">
+            <h3>Gider Dağılımı</h3>
+            <div class="chart-container">
+                <canvas id="expense-chart"></canvas>
+            </div>
+        </section>
+
+        <!-- İşlem Ekleme Formu -->
+        <section class="form-section">
+            <h3>Yeni İşlem Ekle</h3>
+            <form id="transaction-form">
+                <div class="form-control">
+                    <label for="description">Açıklama</label>
+                    <input type="text" id="description" placeholder="Açıklama girin..." required>
+                </div>
+                <div class="form-control">
+                    <label for="amount">Miktar</label>
+                    <input type="number" id="amount" placeholder="Miktar girin..." required>
+                </div>
+                <div class="form-control">
+                    <label for="date">Tarih</label>
+                    <input type="date" id="date" required>
+                </div>
+                <div class="form-control">
+                    <label for="type">İşlem Tipi</label>
+                    <select id="type" required>
+                        <option value="income">Gelir</option>
+                        <option value="expense">Gider</option>
+                    </select>
+                </div>
+                <div class="form-control" id="category-wrapper">
+                    <label for="category">Kategori</label>
+                    <select id="category">
+                        <option value="Yiyecek">Yiyecek</option>
+                        <option value="Ulaşım">Ulaşım</option>
+                        <option value="Eğlence">Eğlence</option>
+                        <option value="Fatura">Fatura</option>
+                        <option value="Diğer">Diğer</option>
+                    </select>
+                    <input type="text" id="new-category" placeholder="Yeni kategori adı..." style="display:none;">
+                </div>
+                <button class="btn">İşlem Ekle</button>
+            </form>
+        </section>
+
+        <!-- CSV İşlemleri -->
+        <section class="csv-section">
+            <h3>Veri Yönetimi</h3>
+            <div class="csv-buttons">
+                <button id="export-csv" class="btn">Verileri CSV Olarak Dışa Aktar</button>
+                <label for="import-csv" class="btn">CSV'den İçe Aktar</label>
+                <input type="file" id="import-csv" accept=".csv" style="display: none;">
+            </div>
+        </section>
+
+        <!-- İşlem Geçmişi Tablosu -->
+        <section class="history-section">
+            <h3>İşlem Geçmişi</h3>
+            <table id="transaction-table">
+                <thead>
+                    <tr>
+                        <th>Açıklama</th>
+                        <th>Miktar</th>
+                        <th>Tarih</th>
+                        <th>Tip</th>
+                        <th>Kategori</th>
+                        <th>İşlem</th>
+                    </tr>
+                </thead>
+                <tbody id="transaction-list">
+                    <!-- Kayıtlar buraya eklenecek -->
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
