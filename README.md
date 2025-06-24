@@ -40,19 +40,4 @@ Bu web uygulaması, kullanıcıların gelir ve giderlerini kolayca takip edebilm
 ┗ 📜 README.md
 ```
 
-## ⚙️ Kurulum
 
-```bash
-git clone https://github.com/kullaniciadi/gelir-gider-takip.git
-cd gelir-gider-takip
-# index.html dosyasını aç ve kullanmaya başla
-```
-
-## 👨‍💻 Geliştirici Notu
-
-Bu proje frontend odaklıdır. Backend veya veri tabanı kullanmadan sadece istemci tarafında veri saklar. Kolay kurulum, sade arayüz ve modern kullanıcı deneyimi hedeflenmiştir.
-
----
-
-**Hazırlayan:** [Adınızı buraya yazın]  
-📅 Haziran 2025
